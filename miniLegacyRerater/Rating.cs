@@ -8,10 +8,18 @@ private string EffectiveDate="4/24/2024";
 // private int NumberOfVehicles=1;
 // private int NumberofDrivers=1;
 // private int NumberOfOccurrences=0;
-private int RateGen=52;
-private int Premium=100;
+private int RateGen=0;
+private double Premium=100;
 
 //constructor
+public Rating(int PolicyId, string EffectiveDate){
+    setPolicyId(PolicyId);
+    // setRiskState(RiskState);
+    setEffectiveDate(EffectiveDate);
+}
+
+public Rating(){
+}
 
 //public Rating(int PolicyId, string RiskState, string EffectiveDate, int NumberOfVehicles, int NumberofDrivers, int NumberOfOccurrences, int RateGen){
     public Rating(int PolicyId, string EffectiveDate, int RateGen,int Premium){
@@ -37,7 +45,13 @@ public void setRageGen(int RateGen){
 }
 
 public void setPremium(int Premium){
-    this.Premium=Premium*2;
+    switch (RateGen){
+        case 1: this.Premium=Premium*1.1;
+        break;
+        case 2: this.Premium=Premium*1.2;
+        break;
+    }
+    
 }
 // public string getRiskState(){
 //     return this.RiskState;
@@ -49,7 +63,13 @@ public void setPremium(int Premium){
 //methods
 public override string ToString()
     {
-        return ($"PolicyId={PolicyId}\nEffectiveDate={EffectiveDate}\nRateGen={RateGen}\nPremium={Premium}");
+        return ($"PolicyId={PolicyId} - EffectiveDate={EffectiveDate} - RateGen={RateGen} - Premium={Premium}");
     }
 
+    public void Rate(){
+        for(int i=0;i<3;i++){
+            Console.Write(".");
+            Thread.Sleep(500);
+            }
+            }
 }

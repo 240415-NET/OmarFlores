@@ -1,0 +1,15 @@
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\miniLegacyRerater.exe
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\miniLegacyRerater.deps.json
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\miniLegacyRerater.runtimeconfig.json
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\miniLegacyRerater.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\miniLegacyRerater.pdb
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.GeneratedMSBuildEditorConfig.editorconfig
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.AssemblyInfoInputs.cache
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.AssemblyInfo.cs
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.csproj.CoreCompileInputs.cache
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.sourcelink.json
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\refint\miniLegacyRerater.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.pdb
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.genruntimeconfig.cache
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\ref\miniLegacyRerater.dll
