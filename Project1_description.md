@@ -10,7 +10,7 @@
 
 ## Application Ideas
 
-### Policy re-rating tracker
+### Policy re-rater
 
 - Accounts for more than one policy
 - Different categories of items that go into premium calculation (occurrences (a.k.a accidents, convictions and suspensions), discounts)
