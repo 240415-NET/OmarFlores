@@ -1,4 +1,4 @@
-# TrackMyStuff Planning Document
+# Legacy Rerater Mini, Planning Document
 
 ## I want to...
 
@@ -10,17 +10,14 @@
 
 ## Application Ideas
 
-### Policy re-rating tracker (More code)
+### Policy re-rating tracker
 
 - Accounts for more than one policy
 - Different categories of items that go into premium calculation (occurrences (a.k.a accidents, convictions and suspensions), discounts)
-- Storing the original value of the items
-- description
+- Description
 - Date of Purchase of the policies
 - In-force date, which determines the rategen (the initial demonstration asked for entering the rategen manually.  Here is derived from the in-force date)
 - any other ...
-
-## Track My Stuff
 
 ### Models (What are we trying to store/work with)
 
