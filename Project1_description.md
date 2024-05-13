@@ -25,27 +25,17 @@
   - userId (int)
   - userName (string)
 
-- Policy - Things Common to most/all item types (This is our parent/super class)
+- Groups - Things Common to most/all item types (This is our parent/super class)
   - policyId (int/maybe guid)
   - ownerId (int referencing someone's userId)
   - item category (string) ?
   - Original Cost (double)
   - Purchase Date (DateTime)
   - Description (string)
+ 
+- Subgroup
+-   Rerating to a new rategen
 
-- PP Auto - inherit/extends our base Policy class
-  - name (string)
-  - vehicleType (string)
-  - occurrences (double)
-  - discounts (double)
-    - some discounts are only applicable to PP auto
-
-- RV - inherit/extends our base Policy class
-  - name (string)
-  - vehicleType (string)
-  - occurrences (double)
-  - discounts (double)
-    -some discounts are only available for RV
 
 ### User Stories/Features
 
@@ -57,3 +47,7 @@
       - if a given username already exists, prompt the user to provide a different username
     - OR we want to pull up their information (business logic/controller)
       - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer).
+- As a user I want to be able to add a group
+- As a user I want to be able to add a sub-group
+- There is no use case for deleting a group by a user.  Deletion is automated and it happens every 21 days
+  
