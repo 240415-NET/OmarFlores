@@ -165,7 +165,7 @@ public static void UserLoginMenu()
                 Console.WriteLine("You're logged in!");
                 Console.WriteLine($"Username: {existingUser.userName}");
                 Console.WriteLine($"User Id: {existingUser.userId}");
-                UserReratingMenu();
+                UserReratingMenu(userInput);
                 validInput = true;
                 //ItemMenu.ItemFunctionMenu(existingUser); //new line for calling item functionality menu
             }
@@ -174,14 +174,14 @@ public static void UserLoginMenu()
 
     }
 
-    private static void UserReratingMenu()
+    private static void UserReratingMenu(string userInput)
     {
         
             Console.WriteLine("What do you want to do?:\n1. Add a set\n2. Delete a set\n3. Run a set\n4. Quit?");
             int input = Int16.Parse(Console.ReadLine());
 
             switch(input){
-                case 1: AddASet();
+                case 1: AddASet(userInput);
                 break;
                 case 2: AddASubset();
                 break;
@@ -204,11 +204,11 @@ public static void UserLoginMenu()
         throw new NotImplementedException();
     }
 
-    private static void AddASet()
+    private static void AddASet(string userInput)
     {
         Console.WriteLine("For what RiskState?");
         string RiskState=Console.ReadLine();
-        GroupController.CreateGroup(RiskState);
+        GroupController.CreateGroup(RiskState,userInput);
         //get all policies from PolicyFile that are in RiskState and display them
         
     }

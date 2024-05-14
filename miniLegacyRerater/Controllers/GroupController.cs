@@ -7,7 +7,7 @@ public class GroupController
 {
 
 private static IGroupStorageRepo _groupData = new JsonGroupStorage();
-public static void CreateGroup(string groupName)
+public static void CreateGroup(string groupName,string userName)
     {
         //Creating the user
     Console.WriteLine($"This Should Add A Group {groupName}");
@@ -15,8 +15,8 @@ public static void CreateGroup(string groupName)
 
     
 
-        //Creating the user
-        Group newGroup = new Group(groupName,getPolicies( groupName),_groupData.NextGroupId());
+        //Creating the group
+        Group newGroup = new Group(groupName,getPolicies( groupName),_groupData.NextGroupId(),userName);
         
         //Adding a WriteLine to just verify that we got here from the presentation layer
         //Console.WriteLine($"User {newUser.userName} created using CreateUser()!");
