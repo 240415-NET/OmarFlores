@@ -1,0 +1,56 @@
+[
+    {
+        "_groupId": 1,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897",
+        "_userName": null
+    },
+    {
+        "_groupId": 2,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897",
+        "_userName": null
+    },
+    {
+        "_groupId": 3,
+        "_name": "MD",
+        "_listOfPolicies": "1234567890,1234567891",
+        "_userName": null
+    },
+    {
+        "_groupId": 4,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897",
+        "_userName": null
+    },
+    {
+        "_groupId": 5,
+        "_name": "TX",
+        "_listOfPolicies": "1234567892,1234567893,1234567894,1234567895",
+        "_userName": null
+    },
+    {
+        "_groupId": 6,
+        "_name": "MD",
+        "_listOfPolicies": "1234567890,1234567891",
+        "_userName": null
+    },
+    {
+        "_groupId": 7,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897",
+        "_userName": "Omar"
+    },
+    {
+        "_groupId": 8,
+        "_name": "MD",
+        "_listOfPolicies": "1234567890,1234567891",
+        "_userName": "Patricia"
+    },
+    {
+        "_groupId": 9,
+        "_name": "FL",
+        "_listOfPolicies": "FL_1234567897,FL_1234567898,FL_1234567899,FL_1234567900",
+        "_userName": "Patricia"
+    }
+]
