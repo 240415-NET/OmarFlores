@@ -1,0 +1,50 @@
+[
+    {
+        "PolicyId": "1234567890",
+        "RiskState": "MD"
+    },
+    {
+        "PolicyId": "1234567891",
+        "RiskState": "MD"
+    },
+    {
+        "PolicyId": "1234567892",
+        "RiskState": "TX"
+    },
+    {
+        "PolicyId": "1234567893",
+        "RiskState": "TX"
+    },
+    {
+        "PolicyId": "1234567894",
+        "RiskState": "TX"
+    },
+    {
+        "PolicyId": "1234567895",
+        "RiskState": "TX"
+    },
+    {
+        "PolicyId": "1234567896",
+        "RiskState": "NY"
+    },
+    {
+        "PolicyId": "1234567897",
+        "RiskState": "NY"
+    },
+    {
+        "PolicyId": "1234567897",
+        "RiskState": "FL"
+    },
+    {
+        "PolicyId": "1234567898",
+        "RiskState": "FL"
+    },
+    {
+        "PolicyId": "1234567899",
+        "RiskState": "FL"
+    },
+    {
+        "PolicyId": "1234567900",
+        "RiskState": "FL"
+    }
+]

@@ -1,8 +1,7 @@
-using System.Security.Cryptography.X509Certificates;
 
 namespace miniLegacyRerater;
 
-public class UI_Class
+public class PolicyMenu
 {
 
     //class that controls the information input

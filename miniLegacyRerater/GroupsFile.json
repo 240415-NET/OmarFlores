@@ -1,0 +1,37 @@
+[
+    {
+        "_groupId": 0,
+        "_name": "TX",
+        "_listOfPolicies": "1234567892,1234567893,1234567894,1234567895,"
+    },
+    {
+        "_groupId": 0,
+        "_name": "MD",
+        "_listOfPolicies": "1234567890,1234567891,"
+    },
+    {
+        "_groupId": 0,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897,"
+    },
+    {
+        "_groupId": 0,
+        "_name": "FL",
+        "_listOfPolicies": "1234567897,1234567898,1234567899,1234567900"
+    },
+    {
+        "_groupId": 1,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897"
+    },
+    {
+        "_groupId": 2,
+        "_name": "NY",
+        "_listOfPolicies": "1234567896,1234567897,1"
+    },
+    {
+        "_groupId": 1,
+        "_name": "MD",
+        "_listOfPolicies": "1234567890,1234567891,2"
+    }
+]
