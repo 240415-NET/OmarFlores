@@ -16,7 +16,7 @@ public static void CreateGroup(string groupName)
     
 
         //Creating the user
-        Group newGroup = new Group(groupName,getPolicies( groupName), 1);
+        Group newGroup = new Group(groupName,getPolicies( groupName),_groupData.NextGroupId());
         
         //Adding a WriteLine to just verify that we got here from the presentation layer
         //Console.WriteLine($"User {newUser.userName} created using CreateUser()!");

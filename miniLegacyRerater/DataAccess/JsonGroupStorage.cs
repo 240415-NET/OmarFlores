@@ -24,20 +24,20 @@ public class JsonGroupStorage : IGroupStorageRepo
                 policyIds.Add(f);
             }
 
-            int maxGroup = ReadGroups();
-            policyIds.Add(maxGroup.ToString());
+            // int maxGroup = NextGroupId();
+            // policyIds.Add(maxGroup.ToString());
 
             return policyIds;
     }
 
-    public int ReadGroups()
+    public int NextGroupId()
     {
         string existingGroups = File.ReadAllText(filePathGroups);
 
             //Then, we need to serialize the string back into a List of User objects
             List<Group> existingGroupList = JsonSerializer.Deserialize<List<Group>>(existingGroups);
 
-            return existingGroupList.Select(group => group._groupId).Max();
+            return existingGroupList.Select(group => group._groupId).Max()+1;
 
     }
 

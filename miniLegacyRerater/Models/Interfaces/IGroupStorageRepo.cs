@@ -7,6 +7,6 @@ public interface IGroupStorageRepo
 
     //Here I will add all of the storage methods
     public void StoreGroup(Group newGroup);
-    public int ReadGroups();
+    public int NextGroupId();
     
 }
