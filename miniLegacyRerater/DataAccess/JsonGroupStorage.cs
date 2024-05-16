@@ -15,13 +15,19 @@ public class JsonGroupStorage : IGroupStorageRepo
 
             //Once you get the string from the file, THEN you can deserialize it.
             List<Policies> filtered = JsonSerializer.Deserialize<List<Policies>>(policies);
+            List<string> policyIds =  new List<string>();
+            try{  //if such state exists
             
             var v =filtered.Where(x=>x.RiskState==riskState).Select(x=>x.PolicyId);
 
-            List<string> policyIds =  new List<string>();
+            
              foreach(var f in v){
                 //Console.WriteLine($"{f}");
                 policyIds.Add(f);
+            }
+            }
+            catch{  //if no such state exists;
+                policyIds=null;
             }
 
             // int maxGroup = NextGroupId();
