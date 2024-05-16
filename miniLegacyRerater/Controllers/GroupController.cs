@@ -18,7 +18,7 @@ public static void CreateGroup(string groupName,string userName)
         //Creating the group
         string policiesString=getPolicies(groupName);
         if(policiesString==""){
-            Console.WriteLine("ERROR: No such state exists, try NY or MD or TX or FL");
+            Console.WriteLine("Warning: No such state exists: try NY or MD or TX or FL");
         }
         else{
         Group newGroup = new Group(groupName,policiesString,_groupData.NextGroupId(),userName);
