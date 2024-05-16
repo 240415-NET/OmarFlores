@@ -3,6 +3,10 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+#project json data
+GroupsFile.json
+UsersFile.json
+
 # dotenv files
 .env
 
