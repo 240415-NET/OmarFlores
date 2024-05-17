@@ -6,7 +6,7 @@ namespace miniLegacyRerater.Controllers;
 public class GroupController
 {
 
-private static IGroupStorageRepo _groupData = new JsonGroupStorage();
+public static IGroupStorageRepo _groupData = new JsonGroupStorage();
 public static void CreateGroup(string groupName,string userName)
     {
         //Creating the user
@@ -33,7 +33,7 @@ public static void CreateGroup(string groupName,string userName)
 
     }
 
-    private static string getPolicies(string groupName)
+    public static string getPolicies(string groupName)
     {
         //read policies from the file and store them in a list
         List<string> policies = _groupData.FilterPolicies(groupName);

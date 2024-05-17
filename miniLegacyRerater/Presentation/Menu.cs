@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Xml.XPath;
 using miniLegacyRerater.Controllers;
 using miniLegacyRerater.Models;
 
@@ -63,38 +64,7 @@ public class Menu
     //This method handles the prompts for creating a new user profile
     public static void UserCreationMenu() 
     {
-        //We want to ask for a user name
-
-        //We want to make sure the user did not just hit enter and provide a null or empty string
-
-        //We want to call the Controller's UserExists() method to see if a given username is already taken
-
-        //If it is taken, we prompt the user to try again with a new username. 
-
-        //Pass the username to the controller
-
-        /*
-            Lets sketch out the logic here
-
-            We are going to need a boolean "flag" 
-
-            do-while loop checking against our flag
-                {
-                    check if the given input is null or empty
-                        if-else to check if our input is null or empty
-                    
-                    assuming our input is valid according to our business rules (since we set 
-                    the requirement that you cannot have a blank username)
-
-                    we then want to check if a given username exists using the UserExists method 
-                    in the UserController
-                        if the name isn't taken, great
-                        if the name IS taken, then prompt the user to try again
-                } 
-            We stay in the do-while until the input passes both checks.
-        */
-
-        //Declaring our flag boolean outside of our loop, setting it to true
+        
         bool validInput = true;
         string userInput = "";
 
@@ -177,7 +147,7 @@ public static void UserLoginMenu()
     private static void UserReratingMenu(string userInput)
     {
         
-            Console.WriteLine("What do you want to do?:\n1. Add a set\n2. Delete a set\n3. Run a set\n4. Quit?");
+            Console.WriteLine("What do you want to do?:\n1. Add a set\n2. Add a subset\n3. Delete a set\n4. Run a set\n4. Quit?");
             int input = Int16.Parse(Console.ReadLine());
 
             switch(input){
@@ -185,12 +155,43 @@ public static void UserLoginMenu()
                 break;
                 case 2: AddASubset();
                 break;
-                case 3: RunASet();
+                case 3: DeleteASet();
+                break;
+                case 4: RunASet();
                 break;
                 default: return;
 
 
         
+        }
+    }
+
+    private static void DeleteASet()
+    {
+        //display the list of setids and ask which setId to delete
+        var groupStorage = GroupController._groupData;
+        //groupStorage.AllGroupIds() reads in a list all groups, so as long as we delete from here we can write the 
+        //update list of groups.
+        var data = groupStorage.AllGroupIds();
+        List<int> array = new() ;
+        foreach(var v in data){
+            Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
+            array.Add(data.IndexOf(v));
+        }
+        Console.WriteLine("Which setid do you want to delete?");
+        int result;
+        //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
+        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result)){
+            Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
+        }
+        Console.WriteLine(result);
+        //remove index at
+        data.RemoveAt(result);
+        groupStorage.DeleteGroup(data);
+        Console.WriteLine($"set corresponding to index {result} has been deleted.  The new set list is:");
+        foreach(var v in data){
+            Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
+            array.Add(data.IndexOf(v));
         }
     }
 

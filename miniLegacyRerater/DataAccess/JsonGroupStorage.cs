@@ -47,6 +47,17 @@ public class JsonGroupStorage : IGroupStorageRepo
 
     }
 
+     public List<Group> AllGroupIds()
+    {
+        string existingGroups = File.ReadAllText(filePathGroups);
+
+            //Then, we need to serialize the string back into a List of User objects
+            List<Group> existingGroupList = JsonSerializer.Deserialize<List<Group>>(existingGroups);
+
+            return existingGroupList.Select(group => group).ToList();
+
+    }
+
     public void StoreGroup(Group group){
         if(File.Exists(filePathGroups))
         {
@@ -60,7 +71,7 @@ public class JsonGroupStorage : IGroupStorageRepo
             existingGroupsList.Add(group);
 
             //Here we will serialize our list of users, into a JSON text string
-            string jsonExistingGroupsListString = JsonSerializer.Serialize(existingGroupsList);
+            string jsonExistingGroupsListString = JsonSerializer.Serialize(existingGroupsList,new JsonSerializerOptions(){WriteIndented=true});
 
             //Now we will store our jsonUsersString to our file
             File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
@@ -80,6 +91,41 @@ public class JsonGroupStorage : IGroupStorageRepo
             //Now we will store our jsonUsersString to our file
             File.WriteAllText(filePathGroups, jsonGroupsListString);
         }
+
+    }
+    public void DeleteGroup(List<Group> listOfGroups){
+        // if(File.Exists(filePathGroups))
+        // {
+            string existingGroupsJson = File.ReadAllText(filePathGroups);
+
+            //Once you get the string from the file, THEN you can deserialize it.
+            //List<Group> existingGroupsList = JsonSerializer.Deserialize<List<Group>>(existingGroupsJson);
+            
+            //Once we deserialize our exisitng JSON text from the file into a new List<User> object
+            //We will then simply add it to the list, using the Add() method
+           // existingGroupsList.Add(group);
+
+            //Here we will serialize our list of users, into a JSON text string
+            string jsonExistingGroupsListString = JsonSerializer.Serialize(listOfGroups,new JsonSerializerOptions(){WriteIndented=true});
+
+            //Now we will store our jsonUsersString to our file
+            File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
+
+        // }
+        // else if (!File.Exists(filePathGroups)) //The first time the program runs, the file probably doesn't exist
+        // {
+        //     //Creating a blank list to use later
+        //     List<Group> initialGroupsList = new List<Group>();
+
+        //     //Adding our user to our list, PRIOR to serializing it
+        //     initialGroupsList.Add(group);
+
+        //     //Here we will serialize our list of users, into a JSON text string
+        //     string jsonGroupsListString = JsonSerializer.Serialize(initialGroupsList);
+
+        //     //Now we will store our jsonUsersString to our file
+        //     File.WriteAllText(filePathGroups, jsonGroupsListString);
+        // }
 
     }
 }
