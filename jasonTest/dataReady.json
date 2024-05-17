@@ -1,0 +1,14 @@
+[
+  {
+    "ModifiedPersonId": 1,
+    "fname": "Hello",
+    "lname": "World",
+    "CityOfResidence": "New York"
+  },
+  {
+    "ModifiedPersonId": 2,
+    "fname": "Foo",
+    "lname": "Bar",
+    "CityOfResidence": "Phoenix"
+  }
+]
