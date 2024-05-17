@@ -1,18 +1,1 @@
-[
-    {
-        "userId": "7adcaa5e-af4c-44d8-83b4-cceff546c445",
-        "userName": "Omar"
-    },
-    {
-        "userId": "611a2978-8d6a-417f-b7ca-40401558288c",
-        "userName": "Patricia"
-    },
-    {
-        "userId": "9abe4daa-0eaf-473f-a1da-c80d414d0f08",
-        "userName": "Michael"
-    },
-    {
-        "userId": "9aa71bad-12d9-4130-a4ac-012cfb71f303",
-        "userName": "user1"
-    }
-]
+[{"userId":"7adcaa5e-af4c-44d8-83b4-cceff546c445","userName":"Omar"},{"userId":"611a2978-8d6a-417f-b7ca-40401558288c","userName":"Patricia"},{"userId":"9abe4daa-0eaf-473f-a1da-c80d414d0f08","userName":"Michael"},{"userId":"9aa71bad-12d9-4130-a4ac-012cfb71f303","userName":"user1"},{"userId":"c274dda9-4406-4af2-a4e4-e8580967b946","userName":"user3"},{"userId":"93f82043-f280-486a-a8a8-f04c8cfc9e75","userName":"user4"}]

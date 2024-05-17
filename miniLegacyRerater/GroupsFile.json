@@ -76,5 +76,23 @@
         "_name": "MD",
         "_listOfPolicies": "MD_1234567890,MD_1234567891",
         "_userName": "Omar"
+    },
+    {
+        "_groupId": 22,
+        "_name": "FL",
+        "_listOfPolicies": "FL_1234567897,FL_1234567898,FL_1234567899,FL_1234567900",
+        "_userName": "Omar"
+    },
+    {
+        "_groupId": 23,
+        "_name": "NY",
+        "_listOfPolicies": "NY_1234567896,NY_1234567897",
+        "_userName": "user3"
+    },
+    {
+        "_groupId": 24,
+        "_name": "NY",
+        "_listOfPolicies": "NY_1234567896,NY_1234567897",
+        "_userName": "user4"
     }
 ]

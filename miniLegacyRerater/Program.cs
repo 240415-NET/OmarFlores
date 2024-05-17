@@ -8,8 +8,8 @@ class Program
     {
         //Console.Clear();
         Console.WriteLine($"Welcome to mini Legacy Rerater!\nThe Legacy Rerater is used to set the price of policies.\nGiven a rategen, the new premium is" +
-        $" calculated. The process is iterated until the right price is achieved.\nIn this example, two rategens are used, one that has a factor 1.1 (10% increase) and another with 1.2.\n" +
-        $"I use two lists, one to keep the policies prior to rerating and the second to keep the policies after rerating.");
+        $" calculated. The process is iterated until the right price is achieved.\nThe users start the process by creating a set of policies.\n" +
+        $"Once the set is created, the rerating is done for the set.\n");
         /*
         object that mimics the Legacy Rerater
         - class for the UI

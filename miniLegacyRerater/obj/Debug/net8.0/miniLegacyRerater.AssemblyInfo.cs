@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("miniLegacyRerater")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc8767f8e88b2ad8803d982230234f3d396aceb0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6132020833ec0d3deb184435595498a99874e50")]
 [assembly: System.Reflection.AssemblyProductAttribute("miniLegacyRerater")]
 [assembly: System.Reflection.AssemblyTitleAttribute("miniLegacyRerater")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
