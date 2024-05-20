@@ -18,12 +18,6 @@
     "_userName": "Omar"
   },
   {
-    "_groupId": 16,
-    "_name": "FL",
-    "_listOfPolicies": "FL_1234567897,FL_1234567898,FL_1234567899,FL_1234567900",
-    "_userName": "user1"
-  },
-  {
     "_groupId": 18,
     "_name": "NY",
     "_listOfPolicies": "NY_1234567896,NY_1234567897",
@@ -52,5 +46,11 @@
     "_name": "NY",
     "_listOfPolicies": "NY_1234567896,NY_1234567897",
     "_userName": "Omar"
+  },
+  {
+    "_groupId": 24,
+    "_name": "NY",
+    "_listOfPolicies": "NY_1234567896,NY_1234567897",
+    "_userName": "pancake"
   }
 ]

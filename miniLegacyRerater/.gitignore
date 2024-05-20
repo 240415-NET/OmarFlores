@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+#conn string
+./ConnectionString.txt
+
 #project json data
 ./GroupsFile.json
 ./UsersFile.json
