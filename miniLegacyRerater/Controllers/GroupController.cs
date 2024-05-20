@@ -6,7 +6,7 @@ namespace miniLegacyRerater.Controllers;
 public class GroupController
 {
 
-public static IGroupStorageRepo _groupData = new JsonGroupStorage();
+public static IGroupStorageRepo _groupData = new SQLGroupStorage();
 public static void CreateGroup(string groupName,string userName)
     {
         //Creating the user
