@@ -174,11 +174,12 @@ public static void UserLoginMenu()
         //update list of groups.
         var data = groupStorage.AllGroupIds();
         List<int> array = new() ;
+        Console.WriteLine("Which setid do you want to delete?  Choose the first value, that is the index.");
         foreach(var v in data){
             Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
             array.Add(data.IndexOf(v));
         }
-        Console.WriteLine("Which setid do you want to delete?");
+
         int result;
         //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
         while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result)){

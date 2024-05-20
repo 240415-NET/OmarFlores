@@ -13,3 +13,11 @@ C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerate
 C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.pdb
 C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.genruntimeconfig.cache
 C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\ref\miniLegacyRerater.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\System.Data.SqlClient.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLegacyRerater.csproj.AssemblyReference.cache
+C:\Temp\sandbox\RevatureBootCamp\240415-cc-geico-net\OmarFlores\miniLegacyRerater\obj\Debug\net8.0\miniLega.047FE6A1.Up2Date
