@@ -11,6 +11,7 @@ public interface IGroupStorageRepo
 
     List<Group> AllGroupIds();
 
-    public void DeleteGroup(List<Group> listOfGroups);
+    //public void DeleteGroup(List<Group> listOfGroups);  //this is for json
+    public void DeleteGroup(int result);
     
 }
