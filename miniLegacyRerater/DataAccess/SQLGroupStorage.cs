@@ -87,14 +87,16 @@ public class SQLGroupStorage : IGroupStorageRepo
             //cmd.Parameters.AddWithValue("@userToFind",userNameToFind);
 
             using SqlDataReader reader = cmd.ExecuteReader();
-            Group group = new Group();
+           
             List<Group> existingGroupList = new List<Group>();
             while(reader.Read()){
+                 Group group = new Group();
                 group._groupId=reader.GetInt32(0);
                 group._name=reader.GetString(1);
                 group._listOfPolicies=reader.GetString(2);
                 group._userName=reader.GetString(3);
-                Console.WriteLine($"{group._groupId} {group._name} {group._listOfPolicies} {group._userName}");
+                existingGroupList.Add(group);
+                //Console.WriteLine($"{group._groupId} {group._name} {group._listOfPolicies} {group._userName}");
             }
 
         conn.Close();

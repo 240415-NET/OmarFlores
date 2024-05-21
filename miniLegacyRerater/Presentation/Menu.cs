@@ -176,7 +176,7 @@ public static void UserLoginMenu()
         //List<int> array = new() ;
         Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
         foreach(var v in data){
-            Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
+            Console.WriteLine($"{v._groupId} {v._name} {v._listOfPolicies} {v._userName}");
             //array.Add(v._groupId);
         }
 
@@ -189,10 +189,11 @@ public static void UserLoginMenu()
         //remove index at
         //data.RemoveAt(result);
         groupStorage.DeleteGroup(result);
-        Console.WriteLine($"set corresponding to index {result} has been deleted.  The new set list is:");
-        int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
-        foreach(var v in data){
-            Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
+        Console.WriteLine($"set corresponding to Id {result} has been deleted.  The new set list is:");
+        //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
+        var dataAfter = groupStorage.AllGroupIds();
+        foreach(var v in dataAfter){
+            Console.WriteLine($"{v._groupId} {v._name} {v._listOfPolicies} {v._userName}");
             //array.Add(data.IndexOf(v));
         }
     }
