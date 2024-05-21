@@ -78,68 +78,72 @@ public class SQLGroupStorage : IGroupStorageRepo
 
      public List<Group> AllGroupIds()
     {
-        string existingGroups = File.ReadAllText(filePathGroups);
+        string connection = File.ReadAllText("ConnectionString.txt");
+        SqlConnection conn = new SqlConnection(connection);
+        string cmdText = "select groupID,groupName,listOfPolicies,userName from dbo.Groups;";
+        conn.Open();
+            using SqlCommand cmd = new SqlCommand(cmdText,conn);  
 
-            //Then, we need to serialize the string back into a List of User objects
-            List<Group> existingGroupList = JsonSerializer.Deserialize<List<Group>>(existingGroups);
+            //cmd.Parameters.AddWithValue("@userToFind",userNameToFind);
 
-            return existingGroupList.Select(group => group).ToList();
+            using SqlDataReader reader = cmd.ExecuteReader();
+            Group group = new Group();
+            List<Group> existingGroupList = new List<Group>();
+            while(reader.Read()){
+                group._groupId=reader.GetInt32(0);
+                group._name=reader.GetString(1);
+                group._listOfPolicies=reader.GetString(2);
+                group._userName=reader.GetString(3);
+                Console.WriteLine($"{group._groupId} {group._name} {group._listOfPolicies} {group._userName}");
+            }
+
+        conn.Close();
+        // string existingGroups = File.ReadAllText(filePathGroups);
+
+        //     //Then, we need to serialize the string back into a List of User objects
+        //     List<Group> existingGroupList = JsonSerializer.Deserialize<List<Group>>(existingGroups);
+
+          return existingGroupList.Select(group => group).ToList();
+
+            
 
     }
 
     public void StoreGroup(Group group){
-        if(File.Exists(filePathGroups))
-        {
-            string existingGroupsJson = File.ReadAllText(filePathGroups);
+        
+        //store the group in the db via inserts
+        Console.WriteLine($"SQL store group {group._groupId}");
+        
+         using SqlConnection sqlConnection = new SqlConnection(connectionString);
+        //try{
+           
+            sqlConnection.Open();
+       string cmdText= @"INSERT INTO dbo.Groups(groupName,listOfPolicies,userName)
+                            VALUES(@groupName,@listOfPolicies,@userName);";
+        using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
 
-            //Once you get the string from the file, THEN you can deserialize it.
-            List<Group> existingGroupsList = JsonSerializer.Deserialize<List<Group>>(existingGroupsJson);
-            
-            //Once we deserialize our exisitng JSON text from the file into a new List<User> object
-            //We will then simply add it to the list, using the Add() method
-            existingGroupsList.Add(group);
+        cmd.Parameters.AddWithValue("@groupName",group._name);
+        cmd.Parameters.AddWithValue("@listOfPolicies",group._listOfPolicies);
+        cmd.Parameters.AddWithValue("@userName",group._userName);
+        cmd.ExecuteNonQuery();
+        sqlConnection.Close();
 
-            //Here we will serialize our list of users, into a JSON text string
-            string jsonExistingGroupsListString = JsonSerializer.Serialize(existingGroupsList,new JsonSerializerOptions(){WriteIndented=true});
-
-            //Now we will store our jsonUsersString to our file
-            File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
-
-        }
-        else if (!File.Exists(filePathGroups)) //The first time the program runs, the file probably doesn't exist
-        {
-            //Creating a blank list to use later
-            List<Group> initialGroupsList = new List<Group>();
-
-            //Adding our user to our list, PRIOR to serializing it
-            initialGroupsList.Add(group);
-
-            //Here we will serialize our list of users, into a JSON text string
-            string jsonGroupsListString = JsonSerializer.Serialize(initialGroupsList);
-
-            //Now we will store our jsonUsersString to our file
-            File.WriteAllText(filePathGroups, jsonGroupsListString);
-        }
 
     }
-    public void DeleteGroup(List<Group> listOfGroups){
+    public void DeleteGroup(int result){
         // if(File.Exists(filePathGroups))
         // {
-            string existingGroupsJson = File.ReadAllText(filePathGroups);
+           Console.WriteLine($"SQL delete group {result}");
+        
+         using SqlConnection sqlConnection = new SqlConnection(connectionString);
+        //try{
+           
+            sqlConnection.Open();
+       string cmdText= $"delete from dbo.Groups where groupId={result}";
+        using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
 
-            //Once you get the string from the file, THEN you can deserialize it.
-            //List<Group> existingGroupsList = JsonSerializer.Deserialize<List<Group>>(existingGroupsJson);
-            
-            //Once we deserialize our exisitng JSON text from the file into a new List<User> object
-            //We will then simply add it to the list, using the Add() method
-           // existingGroupsList.Add(group);
-
-            //Here we will serialize our list of users, into a JSON text string
-            string jsonExistingGroupsListString = JsonSerializer.Serialize(listOfGroups,new JsonSerializerOptions(){WriteIndented=true});
-
-            //Now we will store our jsonUsersString to our file
-            File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
-
+        cmd.ExecuteNonQuery();
+        sqlConnection.Close();
         // }
         // else if (!File.Exists(filePathGroups)) //The first time the program runs, the file probably doesn't exist
         // {

@@ -93,7 +93,7 @@ public class JsonGroupStorage : IGroupStorageRepo
         }
 
     }
-    public void DeleteGroup(List<Group> listOfGroups){
+    public void DeleteGroup(int result){
         // if(File.Exists(filePathGroups))
         // {
             string existingGroupsJson = File.ReadAllText(filePathGroups);
@@ -106,10 +106,10 @@ public class JsonGroupStorage : IGroupStorageRepo
            // existingGroupsList.Add(group);
 
             //Here we will serialize our list of users, into a JSON text string
-            string jsonExistingGroupsListString = JsonSerializer.Serialize(listOfGroups,new JsonSerializerOptions(){WriteIndented=true});
+            //string jsonExistingGroupsListString = JsonSerializer.Serialize(listOfGroups,new JsonSerializerOptions(){WriteIndented=true});
 
             //Now we will store our jsonUsersString to our file
-            File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
+            //File.WriteAllText(filePathGroups, jsonExistingGroupsListString);
 
         // }
         // else if (!File.Exists(filePathGroups)) //The first time the program runs, the file probably doesn't exist

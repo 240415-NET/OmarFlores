@@ -173,26 +173,27 @@ public static void UserLoginMenu()
         //groupStorage.AllGroupIds() reads in a list all groups, so as long as we delete from here we can write the 
         //update list of groups.
         var data = groupStorage.AllGroupIds();
-        List<int> array = new() ;
-        Console.WriteLine("Which setid do you want to delete?  Choose the first value, that is the index.");
+        //List<int> array = new() ;
+        Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
         foreach(var v in data){
             Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
-            array.Add(data.IndexOf(v));
+            //array.Add(v._groupId);
         }
 
         int result;
-        //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
-        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result)){
+        //
+        while(!int.TryParse(Console.ReadLine(), out result) ){
             Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
         }
         Console.WriteLine(result);
         //remove index at
-        data.RemoveAt(result);
-        groupStorage.DeleteGroup(data);
+        //data.RemoveAt(result);
+        groupStorage.DeleteGroup(result);
         Console.WriteLine($"set corresponding to index {result} has been deleted.  The new set list is:");
+        int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
         foreach(var v in data){
             Console.WriteLine($"{data.IndexOf(v)} {v._groupId} {v._name} {v._userName}");
-            array.Add(data.IndexOf(v));
+            //array.Add(data.IndexOf(v));
         }
     }
 
