@@ -173,16 +173,16 @@ public static void UserLoginMenu()
         //groupStorage.AllGroupIds() reads in a list all groups, so as long as we delete from here we can write the 
         //update list of groups.
         var data = groupStorage.AllGroupIds();
-        //List<int> array = new() ;
+        List<int> array = new() ;
         Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
         foreach(var v in data){
             Console.WriteLine($"{v._groupId} {v._name} {v._listOfPolicies} {v._userName}");
-            //array.Add(v._groupId);
+            array.Add(v._groupId);
         }
 
         int result;
         //
-        while(!int.TryParse(Console.ReadLine(), out result) ){
+        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
             Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
         }
         Console.WriteLine(result);

@@ -10,7 +10,7 @@ public class Policies
 
     //We are using a prebuilt data type from the default System library to generate a truly unique
     //userId
-    public string PolicyId {get; set;}
+    public int PolicyId {get; set;}
     public string RiskState {get; set;}
 
     //Constructors

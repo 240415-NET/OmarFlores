@@ -11,7 +11,7 @@ public class SQLGroupStorage : IGroupStorageRepo
 
     public static string connectionString = File.ReadAllText(@"ConnectionString.txt");
 
-    public List<string> FilterPolicies(string riskState)
+    public List<int> FilterPolicies(string riskState)
     {
         Console.WriteLine($"riskState-SQL Approach {riskState}");
         
@@ -19,7 +19,7 @@ public class SQLGroupStorage : IGroupStorageRepo
         //try{
            
             sqlConnection.Open();
-            string cmdText = @"Select PolicyId, RiskState from dbo.PolicyFile";
+            string cmdText = @"Select PolicyId, RiskState from dbo.Policies";
             using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);  
 
             //cmd.Parameters.AddWithValue("@userToFind",userNameToFind);
@@ -30,7 +30,7 @@ public class SQLGroupStorage : IGroupStorageRepo
             while(reader.Read())
             {
                 Policies policies = new Policies();
-                policies.PolicyId=reader.GetString(0);
+                policies.PolicyId=reader.GetInt32(0);
                 
                 policies.RiskState=reader.GetString(1);
                 Console.WriteLine($"in filterPolicies {policies.PolicyId} {policies.RiskState}");
@@ -38,29 +38,8 @@ public class SQLGroupStorage : IGroupStorageRepo
             }
             sqlConnection.Close();
 
-            List<string> filtered = allPolicies.Where(x=>x.RiskState==riskState).Select(x=>x.PolicyId).ToList();
+            List<int> filtered = allPolicies.Where(x=>x.RiskState==riskState).Select(x=>x.PolicyId).ToList();
             
-        // string policies = File.ReadAllText(filePathPolicies);
-
-        //     //Once you get the string from the file, THEN you can deserialize it.
-            // 
-        //     List<string> policyIds =  new List<string>();
-        //     try{  //if such state exists
-            
-        //     var v =filtered.Where(x=>x.RiskState==riskState).Select(x=>x.PolicyId);
-
-            
-        //      foreach(var f in v){
-        //         //Console.WriteLine($"{f}");
-        //         policyIds.Add(f);
-        //     }
-        //     }
-        //     catch{  //if no such state exists;
-        //         policyIds=null;
-        //     }
-
-            // int maxGroup = NextGroupId();
-            // policyIds.Add(maxGroup.ToString());
 
             return filtered;
     }

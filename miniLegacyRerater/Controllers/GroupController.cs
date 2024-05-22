@@ -36,7 +36,7 @@ public static void CreateGroup(string groupName,string userName)
     public static string getPolicies(string groupName)
     {
         //read policies from the file and store them in a list
-        List<string> policies = _groupData.FilterPolicies(groupName);
+        List<int> policies = _groupData.FilterPolicies(groupName);
         string policies_string=string.Empty;
         if(policies.Count==0){  //if no risk state, policies is null, leave the getPolicies method
             return policies_string;
