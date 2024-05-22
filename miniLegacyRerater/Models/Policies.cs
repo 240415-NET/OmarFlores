@@ -12,6 +12,7 @@ public class Policies
     //userId
     public int PolicyId {get; set;}
     public string RiskState {get; set;}
+    public decimal premium {get;set;}
 
     //Constructors
 

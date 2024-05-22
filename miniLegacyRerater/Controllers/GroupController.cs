@@ -16,12 +16,13 @@ public static void CreateGroup(string groupName,string userName)
     
 
         //Creating the group
-        string policiesString=getPolicies(groupName);
-        if(policiesString==""){
-            Console.WriteLine("Warning: No such state exists: try NY or MD or TX or FL");
+        List<Policies> policies = _groupData.FilterPolicies(groupName);
+        //string policiesString=getPolicies(groupName);
+        if(policies.Count==0){
+            Console.WriteLine("Warning: No such state exists: try NY or MD or TX or FL or VA or KS");
         }
         else{
-        Group newGroup = new Group(groupName,policiesString,_groupData.NextGroupId(),userName);
+        Group newGroup = new Group(groupName,policies,_groupData.NextGroupId(),userName);
         
         //Adding a WriteLine to just verify that we got here from the presentation layer
         //Console.WriteLine($"User {newUser.userName} created using CreateUser()!");
@@ -36,7 +37,7 @@ public static void CreateGroup(string groupName,string userName)
     public static string getPolicies(string groupName)
     {
         //read policies from the file and store them in a list
-        List<int> policies = _groupData.FilterPolicies(groupName);
+        List<Policies> policies = _groupData.FilterPolicies(groupName);
         string policies_string=string.Empty;
         if(policies.Count==0){  //if no risk state, policies is null, leave the getPolicies method
             return policies_string;
