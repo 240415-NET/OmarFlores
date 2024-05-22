@@ -11,7 +11,7 @@ public class SQLGroupStorage : IGroupStorageRepo
 
     public static string connectionString = File.ReadAllText(@"ConnectionString.txt");
 
-    public List<int> FilterPolicies(string riskState)
+    public List<Policies> FilterPolicies(string riskState)
     {
         Console.WriteLine($"riskState-SQL Approach {riskState}");
         
@@ -19,7 +19,7 @@ public class SQLGroupStorage : IGroupStorageRepo
         //try{
            
             sqlConnection.Open();
-            string cmdText = @"Select PolicyId, RiskState from dbo.Policies";
+            string cmdText = @"Select PolicyId, RiskState, premium from dbo.Policies";
             using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);  
 
             //cmd.Parameters.AddWithValue("@userToFind",userNameToFind);
@@ -33,12 +33,13 @@ public class SQLGroupStorage : IGroupStorageRepo
                 policies.PolicyId=reader.GetInt32(0);
                 
                 policies.RiskState=reader.GetString(1);
+                policies.premium=reader.GetDecimal(2);
                 Console.WriteLine($"in filterPolicies {policies.PolicyId} {policies.RiskState}");
                 allPolicies.Add(policies);
             }
             sqlConnection.Close();
 
-            List<int> filtered = allPolicies.Where(x=>x.RiskState==riskState).Select(x=>x.PolicyId).ToList();
+            List<Policies> filtered = allPolicies.Where(x=>x.RiskState==riskState).ToList();
             
 
             return filtered;
@@ -97,17 +98,39 @@ public class SQLGroupStorage : IGroupStorageRepo
         sqlConnection.Open();
 
        
-
-        foreach(int p in group._policies){
-            string cmdText= @"INSERT INTO dbo.Groups(groupName,policies,userName)
-                            VALUES(@groupName,@policies,@userName);";
+        //insert group name and user name in groups
+            string cmdText= @"INSERT INTO dbo.Groups(groupName,userName)
+                            VALUES(@groupName,@userName);";
         using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
         cmd.Parameters.AddWithValue("@groupName",group._name);
-        cmd.Parameters.AddWithValue("@policies",p);
+        
         cmd.Parameters.AddWithValue("@userName",group._userName);
         cmd.ExecuteNonQuery();
+        
+        //get the last group id
+         cmdText= @"SELECT max(groupid) as groupId from dbo.Groups";
+        using SqlCommand cmd2 = new SqlCommand(cmdText,sqlConnection);
+        //cmd2.ExecuteNonQuery();
+        SqlDataReader reader = cmd2.ExecuteReader();
+        int groupId=0;
+        while(reader.Read())
+        
+        {
+         groupId = reader.GetInt32(0);
         }
 
+        //insert policies in policyDetails
+        //policyDetails MUST have groupId
+        foreach(var p in group._policies){
+            cmdText= @"INSERT INTO dbo.policyDetails(policyId,premium,riskState,groupId)
+                            VALUES(@policyId,@premium,@riskState,@groupId);";
+        using SqlCommand cmd1 = new SqlCommand(cmdText,sqlConnection);
+        cmd1.Parameters.AddWithValue("@policyId",p.PolicyId);
+        cmd1.Parameters.AddWithValue("@premium",p.premium);
+        cmd1.Parameters.AddWithValue("@riskState",group._name);
+        cmd1.Parameters.AddWithValue("@groupId",groupId);
+        cmd1.ExecuteNonQuery();
+        }
 
         sqlConnection.Close();
 
