@@ -147,17 +147,22 @@ public static void UserLoginMenu()
     private static void UserReratingMenu(string userInput)
     {
         
-            Console.WriteLine("What do you want to do?:\n1. Add a set\n2. Add a subset\n3. Delete a set\n4. Run a set\n4. Quit?");
-            int input = Int16.Parse(Console.ReadLine());
-
-            switch(input){
+            Console.WriteLine("What do you want to do?:\n1. Add a set\n2. Delete a set\n3. Run a set\n4. Quit?");
+            bool flag=false;
+            int output;
+            do{
+                flag=int.TryParse(Console.ReadLine(), out output);
+                if(flag==false){
+                    Console.WriteLine("not a valid input, please enter your choice again.\nWhat do you want to do?:\n1. Add a set\n2. Delete a set\n3. Run a set\n4. Quit?");
+                }
+            }while(flag==false);
+            
+            switch(output){
                 case 1: AddASet(userInput);
                 break;
-                case 2: AddASubset();
+                case 2: DeleteASet();
                 break;
-                case 3: DeleteASet();
-                break;
-                case 4: RunASet();
+                case 3: RunASet();
                 break;
                 default: return;
 
@@ -200,13 +205,27 @@ public static void UserLoginMenu()
 
     private static void RunASet()
     {
-        throw new NotImplementedException();
+        //grab the premiums for the policies in the set and display the total
+        var groupStorage = GroupController._groupData;
+         var data = groupStorage.AllGroupIds();
+         List<int> array = new() ;
+        Console.WriteLine("Which setid do you want to run?  Choose the first value.");
+        foreach(var v in data){
+            Console.WriteLine($"{v._groupId} {v._name} {v._policies} {v._userName}");
+            array.Add(v._groupId);
+        }
+
+        int result;
+        //
+        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
+            Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
+        }
+        Console.WriteLine(result);
+
+        GroupController runSet = new();
+        Console.WriteLine($"The total premium for setid {result} is {runSet.RunSet(result)}");
     }
 
-    private static void AddASubset()
-    {
-        throw new NotImplementedException();
-    }
 
     private static void AddASet(string userInput)
     {

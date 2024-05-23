@@ -22,7 +22,7 @@ public static void CreateGroup(string groupName,string userName)
             Console.WriteLine("Warning: No such state exists: try NY or MD or TX or FL or VA or KS");
         }
         else{
-        Group newGroup = new Group(groupName,policies,_groupData.NextGroupId(),userName);
+        Group newGroup = new Group(groupName,policies,_groupData.NextGroupId(),userName,DateTime.Now);
         
         //Adding a WriteLine to just verify that we got here from the presentation layer
         //Console.WriteLine($"User {newUser.userName} created using CreateUser()!");
@@ -55,5 +55,11 @@ public static void CreateGroup(string groupName,string userName)
         return policies_string;
         }
    
+    }
+
+     public decimal RunSet(int result)
+    {
+        Console.WriteLine($"Running the set {result} now...");
+        return _groupData.getPremiums(result);
     }
 }

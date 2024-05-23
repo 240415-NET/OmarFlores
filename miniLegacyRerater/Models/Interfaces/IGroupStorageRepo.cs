@@ -13,5 +13,7 @@ public interface IGroupStorageRepo
 
     //public void DeleteGroup(List<Group> listOfGroups);  //this is for json
     public void DeleteGroup(int result);
+    //public void RunSet(int result);
+    public decimal getPremiums(int result);
     
 }

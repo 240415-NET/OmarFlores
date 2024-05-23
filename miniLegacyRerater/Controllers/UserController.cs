@@ -45,6 +45,7 @@ public class UserController
         if(_userData.FindUser(userName) != null)
         {
             return true;
+            //HACK
         }
 
         return false;
