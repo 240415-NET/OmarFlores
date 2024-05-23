@@ -90,7 +90,6 @@ public class SQLGroupStorage : IGroupStorageRepo
     public void StoreGroup(Group group){
         
         //store the group in the db via inserts
-        Console.WriteLine($"SQL store group {group._groupId}");
         
          using SqlConnection sqlConnection = new SqlConnection(connectionString);
         //try{
@@ -159,5 +158,31 @@ public class SQLGroupStorage : IGroupStorageRepo
         sqlConnection.Close();
 
 
+    }
+
+    public decimal getPremiums(int result)
+    {
+        string connection = File.ReadAllText("ConnectionString.txt");
+        SqlConnection conn = new SqlConnection(connection);
+        string cmdText = "select premium from dbo.PolicyDetails where groupId = @groupId";
+        conn.Open();
+            using SqlCommand cmd = new SqlCommand(cmdText,conn);  
+
+            cmd.Parameters.AddWithValue("@groupId",result);
+
+            using SqlDataReader reader = cmd.ExecuteReader();
+           
+            List<Group> existingGroupList = new List<Group>();
+            decimal totalPremium = 0;
+            Console.WriteLine("The individual premiums are:");
+            while(reader.Read()){
+                totalPremium += Decimal.Parse(reader.GetString(0));
+                
+                Console.WriteLine($"{reader.GetString(0)}");
+            }
+
+        conn.Close();
+
+          return totalPremium;
     }
 }

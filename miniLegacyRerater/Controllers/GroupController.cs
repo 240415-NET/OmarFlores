@@ -56,4 +56,10 @@ public static void CreateGroup(string groupName,string userName)
         }
    
     }
+
+     public decimal RunSet(int result)
+    {
+        Console.WriteLine($"Running the set {result} now...");
+        return _groupData.getPremiums(result);
+    }
 }
