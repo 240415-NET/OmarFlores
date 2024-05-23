@@ -70,7 +70,7 @@ public class SQLGroupStorage : IGroupStorageRepo
            
             List<Group> existingGroupList = new List<Group>();
             while(reader.Read()){
-                 Group group = new Group();
+                Group group = new Group();
                 group._groupId=reader.GetInt32(0);
                 group._name=reader.GetString(1);
                 //group._policies=reader.GetString(2);
@@ -99,12 +99,12 @@ public class SQLGroupStorage : IGroupStorageRepo
 
        
         //insert group name and user name in groups
-            string cmdText= @"INSERT INTO dbo.Groups(groupName,userName)
-                            VALUES(@groupName,@userName);";
+            string cmdText= @"INSERT INTO dbo.Groups(groupName,userName,datecreated)
+                            VALUES(@groupName,@userName,@dateCreated);";
         using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
         cmd.Parameters.AddWithValue("@groupName",group._name);
-        
         cmd.Parameters.AddWithValue("@userName",group._userName);
+        cmd.Parameters.AddWithValue("@dateCreated",group._dateCreated);
         cmd.ExecuteNonQuery();
         
         //get the last group id
@@ -137,18 +137,25 @@ public class SQLGroupStorage : IGroupStorageRepo
 
     }
     public void DeleteGroup(int result){
-        // if(File.Exists(filePathGroups))
-        // {
+       
            Console.WriteLine($"SQL delete group {result}");
         
          using SqlConnection sqlConnection = new SqlConnection(connectionString);
         //try{
            
             sqlConnection.Open();
+        //delete from Group
        string cmdText= $"delete from dbo.Groups where groupId={result}";
         using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
 
         cmd.ExecuteNonQuery();
+
+        //delete from PolicyDetails
+        string cmdText1= $"delete from dbo.policyDetails where groupId={result}";
+        using SqlCommand cmd1 = new SqlCommand(cmdText1,sqlConnection);
+
+        cmd1.ExecuteNonQuery();
+
         sqlConnection.Close();
 
 
