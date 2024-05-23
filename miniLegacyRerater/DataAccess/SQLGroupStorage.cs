@@ -60,7 +60,7 @@ public class SQLGroupStorage : IGroupStorageRepo
     {
         string connection = File.ReadAllText("ConnectionString.txt");
         SqlConnection conn = new SqlConnection(connection);
-        string cmdText = "select groupID,groupName,listOfPolicies,userName from dbo.Groups;";
+        string cmdText = "select groupID,groupName,userName from dbo.Groups;";
         conn.Open();
             using SqlCommand cmd = new SqlCommand(cmdText,conn);  
 
