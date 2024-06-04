@@ -4359,11 +4359,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
+      "projectUniqueName": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
       "projectName": "miniLegacyRerater",
-      "projectPath": "C:\\temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
+      "projectPath": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
       "packagesPath": "C:\\Users\\U0OCA6\\.nuget\\packages\\",
-      "outputPath": "C:\\temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\obj\\",
+      "outputPath": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\U0OCA6\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4426,7 +4426,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
