@@ -11,7 +11,7 @@ public class SQLGroupStorage : IGroupStorageRepo
 
     public static string connectionString = File.ReadAllText(@"ConnectionString.txt");
 
-    public List<Policies> FilterPolicies(string riskState)
+    public string FilterPolicies(string riskState)
     {
         Console.WriteLine($"riskState-SQL Approach {riskState}");
         
@@ -40,9 +40,14 @@ public class SQLGroupStorage : IGroupStorageRepo
             sqlConnection.Close();
 
             List<Policies> filtered = allPolicies.Where(x=>x.RiskState==riskState).ToList();
+
+            string _policies = string.Empty;
+            filtered.ForEach(x=>_policies += x.PolicyId+" ");
+            
+            _policies = _policies.TrimEnd().Replace(" ",",");
             
 
-            return filtered;
+            return _policies;
     }
 
     public int NextGroupId()
@@ -72,7 +77,7 @@ public class SQLGroupStorage : IGroupStorageRepo
             while(reader.Read()){
                 Group group = new Group();
                 group._groupId=reader.GetInt32(0);
-                group._name=reader.GetString(1);
+                group._groupName=reader.GetString(1);
                 //group._policies=reader.GetString(2);
                 group._userName=reader.GetString(2);
                 existingGroupList.Add(group);
@@ -98,16 +103,17 @@ public class SQLGroupStorage : IGroupStorageRepo
 
        
         //insert group name and user name in groups
-            string cmdText= @"INSERT INTO dbo.Groups(groupName,userName,datecreated)
-                            VALUES(@groupName,@userName,@dateCreated);";
+            string cmdText= @"INSERT INTO dbo.Groups(_groupName,_userName,_datecreated,_policies)
+                            VALUES(@groupName,@userName,@dateCreated,@policies);";
         using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
-        cmd.Parameters.AddWithValue("@groupName",group._name);
+        cmd.Parameters.AddWithValue("@groupName",group._groupName);
         cmd.Parameters.AddWithValue("@userName",group._userName);
         cmd.Parameters.AddWithValue("@dateCreated",group._dateCreated);
+        cmd.Parameters.AddWithValue("@policies",group._policies);
         cmd.ExecuteNonQuery();
         
         //get the last group id
-         cmdText= @"SELECT max(groupid) as groupId from dbo.Groups";
+         cmdText= @"SELECT max(_groupid) as groupId from dbo.Groups";
         using SqlCommand cmd2 = new SqlCommand(cmdText,sqlConnection);
         //cmd2.ExecuteNonQuery();
         SqlDataReader reader = cmd2.ExecuteReader();
@@ -120,13 +126,15 @@ public class SQLGroupStorage : IGroupStorageRepo
 
         //insert policies in policyDetails
         //policyDetails MUST have groupId
-        foreach(var p in group._policies){
+        List<string> pols = group._policies.Split(",").ToList();
+
+        foreach(var p in pols){
             cmdText= @"INSERT INTO dbo.policyDetails(policyId,premium,riskState,groupId)
                             VALUES(@policyId,@premium,@riskState,@groupId);";
         using SqlCommand cmd1 = new SqlCommand(cmdText,sqlConnection);
-        cmd1.Parameters.AddWithValue("@policyId",p.PolicyId);
-        cmd1.Parameters.AddWithValue("@premium",p.premium);
-        cmd1.Parameters.AddWithValue("@riskState",group._name);
+        cmd1.Parameters.AddWithValue("@policyId",p);
+        cmd1.Parameters.AddWithValue("@premium","100");
+        cmd1.Parameters.AddWithValue("@riskState",group._groupName);
         cmd1.Parameters.AddWithValue("@groupId",groupId);
         cmd1.ExecuteNonQuery();
         }
@@ -144,7 +152,7 @@ public class SQLGroupStorage : IGroupStorageRepo
            
             sqlConnection.Open();
         //delete from Group
-       string cmdText= $"delete from dbo.Groups where groupId={result}";
+       string cmdText= $"delete from dbo.Groups where _groupId={result}";
         using SqlCommand cmd = new SqlCommand(cmdText,sqlConnection);
 
         cmd.ExecuteNonQuery();

@@ -181,7 +181,7 @@ public static void UserLoginMenu()
         List<int> array = new() ;
         Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
         foreach(var v in data){
-            Console.WriteLine($"{v._groupId} {v._name} {v._policies} {v._userName}");
+            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
             array.Add(v._groupId);
         }
 
@@ -198,7 +198,7 @@ public static void UserLoginMenu()
         //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
         var dataAfter = groupStorage.AllGroupIds();
         foreach(var v in dataAfter){
-            Console.WriteLine($"{v._groupId} {v._name} {v._policies} {v._userName}");
+            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
             //array.Add(data.IndexOf(v));
         }
     }
@@ -211,7 +211,7 @@ public static void UserLoginMenu()
          List<int> array = new() ;
         Console.WriteLine("Which setid do you want to run?  Choose the first value.");
         foreach(var v in data){
-            Console.WriteLine($"{v._groupId} {v._name} {v._policies} {v._userName}");
+            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
             array.Add(v._groupId);
         }
 

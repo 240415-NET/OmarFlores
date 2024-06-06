@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace miniLegacyRerater.Models;
 
 public class Policies
@@ -10,6 +12,7 @@ public class Policies
 
     //We are using a prebuilt data type from the default System library to generate a truly unique
     //userId
+    [Key]
     public int PolicyId {get; set;}
     public string RiskState {get; set;}
     public decimal premium {get;set;}

@@ -1,1 +1,1 @@
-Data Source=GEIPW0785F8;Initial Catalog=miniLegacyReraterEF;Integrated Security=False;User Id=sa;Password=Revature_Omar;MultipleActiveResultSets=True;TrustServerCertificate=True;
+Data Source=GEIPW0785F8;Initial Catalog=miniLegacyRerater;Integrated Security=False;User Id=sa;Password=Revature_Omar;MultipleActiveResultSets=True;TrustServerCertificate=True;

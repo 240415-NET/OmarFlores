@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using miniLegacyRerater.Models;
-
+using System.ComponentModel.DataAnnotations;
 namespace miniLegacyRerater.Data;
 
 //This class is going to be our "Database Context" class for our application.
@@ -11,12 +11,25 @@ public class miniLegacyReraterContext : DbContext
 {
     //We need to make our Context class aware of the model classes it needs to track for us
     //We do this by creating DbSets for our model classes. MAKE SURE YOU HAVE A GET; SET;
-    public DbSet<User> Users {get; set;}
-    public DbSet<Group> Groups {get; set;}
-    public DbSet<Policies> PolicyDetails {get; set;}
+    public DbSet<User>? Users {get; set;}
+
+    public DbSet<Group>? Groups {get; set;}
+        public DbSet<Policies> PolicyDetails {get; set;}
     
     //Here is a parameterless constructor
     public miniLegacyReraterContext () {}
+
+    protected override void OnConfiguring(
+    DbContextOptionsBuilder optionsBuilder)
+    {
+        //string databaseFile = "Northwind.db";
+        //string path = Path.Combine(
+        //    Environment.CurrentDirectory, databaseFile);
+        string connectionString = @"Data Source=GEIPW0785F8;Initial Catalog=miniLegacyRerater;Integrated Security=False;User Id=sa;Password=Revature_Omar;MultipleActiveResultSets=True;TrustServerCertificate=True;";
+        Console.WriteLine($"Connection: {connectionString}");
+        optionsBuilder.UseSqlServer(connectionString);
+    }
+
 
     //In order to create/apply a migration we need a constructor that accepts a DbContextOptions and 
     //passes it to the base constructor that comes in from the DbContext parent class 
