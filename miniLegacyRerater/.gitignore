@@ -9,6 +9,8 @@
 #project json data
 ./GroupsFile.json
 ./UsersFile.json
+./bin/Debug
+./obj
 
 # dotenv files
 .env
