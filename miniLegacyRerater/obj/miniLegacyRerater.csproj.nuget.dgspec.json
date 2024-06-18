@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj": {}
+    "C:\\Temp\\sandbox\\miniLegacy\\miniLegacyRerater\\miniLegacyRerater.csproj": {}
   },
   "projects": {
-    "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj": {
+    "C:\\Temp\\sandbox\\miniLegacy\\miniLegacyRerater\\miniLegacyRerater.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
+        "projectUniqueName": "C:\\Temp\\sandbox\\miniLegacy\\miniLegacyRerater\\miniLegacyRerater.csproj",
         "projectName": "miniLegacyRerater",
-        "projectPath": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\miniLegacyRerater.csproj",
+        "projectPath": "C:\\Temp\\sandbox\\miniLegacy\\miniLegacyRerater\\miniLegacyRerater.csproj",
         "packagesPath": "C:\\Users\\U0OCA6\\.nuget\\packages\\",
-        "outputPath": "C:\\Temp\\sandbox\\RevatureBootCamp\\240415-cc-geico-net\\OmarFlores\\miniLegacyRerater\\obj\\",
+        "outputPath": "C:\\Temp\\sandbox\\miniLegacy\\miniLegacyRerater\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\U0OCA6\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -53,9 +53,9 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
-            "System.Data.SqlClient": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[4.8.6, )"
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
@@ -70,6 +70,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

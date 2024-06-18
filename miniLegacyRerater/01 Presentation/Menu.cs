@@ -82,19 +82,19 @@ public class Menu
             userInput = userInput.Trim();
 
             //If else to check both of our conditions - empty string and existing username
-            if(String.IsNullOrEmpty(userInput))
-            {
-                Console.WriteLine("Username cannot be blank, please try again.");
-                validInput = false;
-            }else if(UserController.UserExists(userInput))
-            {
-                Console.WriteLine("Username already exists, please choose another.");
-                validInput = false;
-            }else{ //If neither check trips we simply call CreateUser from the UserController!
-                UserController.CreateUser(userInput);
-                Console.WriteLine("Profile created!");
-                validInput = true;
-            }
+            // if(String.IsNullOrEmpty(userInput))
+            // {
+            //     Console.WriteLine("Username cannot be blank, please try again.");
+            //     validInput = false;
+            // }else if(UserController.UserExists(userInput))
+            // {
+            //     Console.WriteLine("Username already exists, please choose another.");
+            //     validInput = false;
+            // }else{ //If neither check trips we simply call CreateUser from the UserController!
+            //     UserController.CreateUser(userInput);
+            //     Console.WriteLine("Profile created!");
+            //     validInput = true;
+            // }
 
         } while (!validInput); //Continue running the above block UNTIL input is valid
 
@@ -122,23 +122,23 @@ public static void UserLoginMenu()
             userInput = userInput.Trim();
 
             //If else to check both of our conditions - empty string and existing username
-            if(String.IsNullOrEmpty(userInput))
-            {
-                Console.WriteLine("Username cannot be blank, please try again.");
-                validInput = false;
-            }else if(!UserController.UserExists(userInput)) //if User doesn't exist
-            {
-                Console.WriteLine("Username doesn't exist, please choose another.");
-                validInput = false;
-            }else{ //If neither check trips we simply call CreateUser from the UserController!
-                User existingUser = UserController.ReturnUser(userInput);
-                Console.WriteLine("You're logged in!");
-                Console.WriteLine($"Username: {existingUser.userName}");
-                Console.WriteLine($"User Id: {existingUser.userId}");
-                UserReratingMenu(userInput);
-                validInput = true;
-                //ItemMenu.ItemFunctionMenu(existingUser); //new line for calling item functionality menu
-            }
+            // if(String.IsNullOrEmpty(userInput))
+            // {
+            //     Console.WriteLine("Username cannot be blank, please try again.");
+            //     validInput = false;
+            // }else if(!UserController.UserExists(userInput)) //if User doesn't exist
+            // {
+            //     Console.WriteLine("Username doesn't exist, please choose another.");
+            //     validInput = false;
+            // }else{ //If neither check trips we simply call CreateUser from the UserController!
+            //     User existingUser = UserController.ReturnUser(userInput);
+            //     Console.WriteLine("You're logged in!");
+            //     Console.WriteLine($"Username: {existingUser.userName}");
+            //     Console.WriteLine($"User Id: {existingUser.userId}");
+            //     UserReratingMenu(userInput);
+            //     validInput = true;
+            //     //ItemMenu.ItemFunctionMenu(existingUser); //new line for calling item functionality menu
+            // }
 
         } while (!validInput); //Continue running the above block UNTIL input is valid
 

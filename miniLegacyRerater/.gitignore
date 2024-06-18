@@ -6,6 +6,9 @@
 #conn string
 ./ConnectionString.txt
 
+./bin
+./obj
+
 #project json data
 ./GroupsFile.json
 ./UsersFile.json

@@ -1,4 +1,4 @@
-namespace WebAPI;
+namespace miniLegacyRerater;
 
 public class WeatherForecast
 {
