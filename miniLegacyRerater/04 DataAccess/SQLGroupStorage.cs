@@ -11,6 +11,12 @@ public class SQLGroupStorage : IGroupStorageRepo
 
     public static string connectionString = File.ReadAllText(@"ConnectionString.txt");
 
+    private readonly miniLegacyReraterContext _context;
+
+    public SQLGroupStorage(miniLegacyReraterContext contextFromBuilder) {
+        _context = contextFromBuilder;
+    }
+
     public List<Group> AllGroupIds()
     {
         throw new NotImplementedException();
@@ -21,9 +27,11 @@ public class SQLGroupStorage : IGroupStorageRepo
         throw new NotImplementedException();
     }
 
-    public string FilterPolicies(string v)
+    public async string FilterPolicies(string v)
     {
-        throw new NotImplementedException();
+        List<Policies> p = _context.PolicyDetails.Where(x=>x.RiskState==v).ToList();
+        List<int> l=new();
+        l = p.Select(x=>x.PolicyId).ToList();
     }
 
     public decimal getPremiums(int result)

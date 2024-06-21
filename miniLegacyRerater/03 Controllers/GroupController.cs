@@ -1,12 +1,22 @@
 using miniLegacyRerater.Models;
 using miniLegacyRerater.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace miniLegacyRerater.Controllers;
 
-public class GroupController
+[ApiController]
+[Route("Users")]
+public class GroupController : ControllerBase
 {
 
 public static IGroupStorageRepo _groupData = new SQLGroupStorage();
+
+
+    [HttpGet("/Groups")]
+    public async Task<Group> FilterPols(string state)
+    {
+        Group g = await _groupData.FilterPolicies(state);
+    }
 public static void CreateGroup(string groupName,string userName)
     {
         //Creating the user

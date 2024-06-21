@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace miniLegacyRerater.Models;
 
-public class Policies
+public class Policies: IPoliciesStorageRepo
 {
     //Fields
     
