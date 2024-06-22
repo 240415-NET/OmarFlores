@@ -14,7 +14,7 @@ public class miniLegacyReraterContext : DbContext
     public DbSet<User>? Users {get; set;}
 
     public DbSet<Group>? Groups {get; set;}
-        public DbSet<Policies> PolicyDetails {get; set;}
+        public DbSet<Policies> policies {get; set;}
     
     //Here is a parameterless constructor
     public miniLegacyReraterContext () {}

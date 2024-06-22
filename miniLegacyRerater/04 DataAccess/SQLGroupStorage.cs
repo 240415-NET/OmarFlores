@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using miniLegacyRerater.Models;
 using System.Data.SqlClient;
 using System.Text.Json;
@@ -27,11 +28,12 @@ public class SQLGroupStorage : IGroupStorageRepo
         throw new NotImplementedException();
     }
 
-    public async string FilterPolicies(string v)
+    public async Task<List<int>> FilterPolicies(string v)
     {
-        List<Policies> p = _context.PolicyDetails.Where(x=>x.RiskState==v).ToList();
+        List<Policies> p = await _context.policies.Where(x => x.RiskState == v).ToListAsync();
         List<int> l=new();
         l = p.Select(x=>x.PolicyId).ToList();
+        return l;
     }
 
     public decimal getPremiums(int result)

@@ -27,6 +27,8 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ISQLUserStorage, SQLUserStorage>();
+builder.Services.AddScoped<IGroupStorageRepo, SQLGroupStorage>();
+
 builder.Services.AddScoped<IPoliciesStorageRepo, Policies>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

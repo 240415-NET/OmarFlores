@@ -3,7 +3,7 @@ namespace miniLegacyRerater.Models;
 
 public interface IGroupStorageRepo
 {
-    string FilterPolicies(string v);
+    Task<List<int>> FilterPolicies(string v);
 
     //Here I will add all of the storage methods
     public void StoreGroup(Group newGroup);

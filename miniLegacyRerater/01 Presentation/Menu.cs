@@ -160,10 +160,10 @@ public static void UserLoginMenu()
             switch(output){
                 case 1: AddASet(userInput);
                 break;
-                case 2: DeleteASet();
-                break;
-                case 3: RunASet();
-                break;
+               // case 2: DeleteASet();
+                //break;
+                //case 3: RunASet();
+                //break;
                 default: return;
 
 
@@ -171,67 +171,67 @@ public static void UserLoginMenu()
         }
     }
 
-    private static void DeleteASet()
-    {
-        //display the list of setids and ask which setId to delete
-        var groupStorage = GroupController._groupData;
-        //groupStorage.AllGroupIds() reads in a list all groups, so as long as we delete from here we can write the 
-        //update list of groups.
-        var data = groupStorage.AllGroupIds();
-        List<int> array = new() ;
-        Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
-        foreach(var v in data){
-            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
-            array.Add(v._groupId);
-        }
+    // private static void DeleteASet()
+    // {
+    //     //display the list of setids and ask which setId to delete
+    //     var groupStorage = GroupController._groupData;
+    //     //groupStorage.AllGroupIds() reads in a list all groups, so as long as we delete from here we can write the 
+    //     //update list of groups.
+    //     var data = groupStorage.AllGroupIds();
+    //     List<int> array = new() ;
+    //     Console.WriteLine("Which setid do you want to delete?  Choose the first value.");
+    //     foreach(var v in data){
+    //         Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
+    //         array.Add(v._groupId);
+    //     }
 
-        int result;
-        //
-        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
-            Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
-        }
-        Console.WriteLine(result);
-        //remove index at
-        //data.RemoveAt(result);
-        groupStorage.DeleteGroup(result);
-        Console.WriteLine($"set corresponding to Id {result} has been deleted.  The new set list is:");
-        //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
-        var dataAfter = groupStorage.AllGroupIds();
-        foreach(var v in dataAfter){
-            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
-            //array.Add(data.IndexOf(v));
-        }
-    }
+    //     int result;
+    //     //
+    //     while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
+    //         Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
+    //     }
+    //     Console.WriteLine(result);
+    //     //remove index at
+    //     //data.RemoveAt(result);
+    //     groupStorage.DeleteGroup(result);
+    //     Console.WriteLine($"set corresponding to Id {result} has been deleted.  The new set list is:");
+    //     //int[] array = groupStorage.AllGroupIds().Select(x=>x._groupId).ToArray();
+    //     var dataAfter = groupStorage.AllGroupIds();
+    //     foreach(var v in dataAfter){
+    //         Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
+    //         //array.Add(data.IndexOf(v));
+    //     }
+    // }
 
-    private static void RunASet()
-    {
-        //grab the premiums for the policies in the set and display the total
-        var groupStorage = GroupController._groupData;
-         var data = groupStorage.AllGroupIds();
-         List<int> array = new() ;
-        Console.WriteLine("Which setid do you want to run?  Choose the first value.");
-        foreach(var v in data){
-            Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
-            array.Add(v._groupId);
-        }
+    // private static void RunASet()
+    // {
+    //     //grab the premiums for the policies in the set and display the total
+    //     var groupStorage = GroupController._groupData;
+    //      var data = groupStorage.AllGroupIds();
+    //      List<int> array = new() ;
+    //     Console.WriteLine("Which setid do you want to run?  Choose the first value.");
+    //     foreach(var v in data){
+    //         Console.WriteLine($"{v._groupId} {v._groupName} {v._userName}");
+    //         array.Add(v._groupId);
+    //     }
 
-        int result;
-        //
-        while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
-            Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
-        }
-        Console.WriteLine(result);
+    //     int result;
+    //     //
+    //     while(!int.TryParse(Console.ReadLine(), out result) || !array.Contains(result) ){
+    //         Console.WriteLine("Error: either the set is not in the existing sets or a bad input occurred, try again");
+    //     }
+    //     Console.WriteLine(result);
 
-        GroupController runSet = new();
-        Console.WriteLine($"The total premium for setid {result} is {runSet.RunSet(result)}");
-    }
+    //     //GroupController runSet = new();
+    //     Console.WriteLine($"The total premium for setid {result} is {runSet.RunSet(result)}");
+    // }
 
 
     private static void AddASet(string userInput)
     {
         Console.WriteLine("For what RiskState?");
         string RiskState=Console.ReadLine();
-        GroupController.CreateGroup(RiskState,userInput);
+        //GroupController.CreateGroup(RiskState,userInput);
         //get all policies from PolicyFile that are in RiskState and display them
         
     }
