@@ -6,7 +6,7 @@ public interface IGroupStorageRepo
     Task<List<int>> FilterPolicies(string v);
 
     //Here I will add all of the storage methods
-    public void StoreGroup(Group newGroup);
+    Task<string> StoreGroup(Group newGroup);
     public int NextGroupId();
 
     List<Group> AllGroupIds();

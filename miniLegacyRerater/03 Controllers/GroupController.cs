@@ -24,6 +24,13 @@ public class GroupController : ControllerBase
         List<int> p = await _context.FilterPolicies(state);
         return p;
      }
+
+    [HttpPost("/Groups")]
+    public async Task<string> CreateGroupController(Group g)
+    {
+        string gString = await _context.StoreGroup(g);
+        return gString;
+     }
 // public static void CreateGroup(string groupName,string userName)
 //     {
 //         //Creating the user

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using miniLegacyRerater.Models;
 using System.Data.SqlClient;
@@ -18,6 +20,32 @@ public class SQLGroupStorage : IGroupStorageRepo
         _context = contextFromBuilder;
     }
 
+    public async Task<List<int>> FilterPolicies(string v)
+    {
+        List<Policies> p = await _context.policies.Where(x => x.RiskState == v).ToListAsync();
+        List<int> l=new();
+        l = p.Select(x=>x.PolicyId).ToList();
+        return l;
+    }
+
+    public async Task<string> StoreGroup(Group newGroup)
+    {
+        // newGroup = new Group{_dateCreated=DateTime.Today,
+                                
+        //                         _groupName="TX",
+        //                         _policies="123,234",
+        //                         _userName="Omar"};
+    try{
+        await _context.Groups.AddAsync(newGroup);
+        await _context.SaveChangesAsync();
+
+        return "Group has been created";
+    }
+    catch(Exception e){
+        return e.Message;
+    }
+    }
+
     public List<Group> AllGroupIds()
     {
         throw new NotImplementedException();
@@ -26,14 +54,6 @@ public class SQLGroupStorage : IGroupStorageRepo
     public void DeleteGroup(int result)
     {
         throw new NotImplementedException();
-    }
-
-    public async Task<List<int>> FilterPolicies(string v)
-    {
-        List<Policies> p = await _context.policies.Where(x => x.RiskState == v).ToListAsync();
-        List<int> l=new();
-        l = p.Select(x=>x.PolicyId).ToList();
-        return l;
     }
 
     public decimal getPremiums(int result)
@@ -46,10 +66,6 @@ public class SQLGroupStorage : IGroupStorageRepo
         throw new NotImplementedException();
     }
 
-    public void StoreGroup(Group newGroup)
-    {
-        throw new NotImplementedException();
-    }
 
     // public string FilterPolicies(string riskState)
     // {
