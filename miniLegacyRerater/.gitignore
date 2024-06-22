@@ -13,7 +13,7 @@
 ./GroupsFile.json
 ./UsersFile.json
 ./bin/Debug
-./obj
+./obj/Debug
 
 # dotenv files
 .env
