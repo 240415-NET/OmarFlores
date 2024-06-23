@@ -11,9 +11,7 @@ const products = [
         style={{
           color: product.isFruit ? 'magenta' : 'darkgreen'
         }}
-      >
-        {product.title}
-      </li>
+      > {product.title} </li>
     );
   
     return (

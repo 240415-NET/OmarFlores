@@ -10,6 +10,7 @@ import ShoppingList from './components/ShoppingList';
 import MyButton from './components/YouClickedMe';
 import MyApp from './components/SeparateUpdateCounters';
 import Board from './components/TicTacToe';
+import ParentComponent from './components/ParentChild';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     <MyButton />
     <MyApp />
     <Board />
+    <ParentComponent />
     </div>
   );
 }
