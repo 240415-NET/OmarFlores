@@ -11,6 +11,8 @@ import MyButton from './components/YouClickedMe';
 import MyApp from './components/SeparateUpdateCounters';
 import Board from './components/TicTacToe';
 import ParentComponent from './components/ParentChild';
+import StatefulComponent from './components/StatefulComponent';
+import DataFetcher from './components/DataFetcher';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
     <MyApp />
     <Board />
     <ParentComponent />
+    <StatefulComponent />
+    <DataFetcher />
     </div>
   );
 }
