@@ -4,7 +4,7 @@ import shuffle from "../utils/shuffleArray";
 
 export const GameContext = createContext();
 
-export const GameProvider = ({ children }) => {
+export function GameProvider ({ children }) {
   const [startMatch, setStartMatch] = useState(false);
   const [matchEnded, setMatchEnded] = useState(false);
 
@@ -26,8 +26,12 @@ export const GameProvider = ({ children }) => {
 
   const [error, setError] = useState(null);
 
-  const setMatch = () => {
-    let randInt = Math.floor(Math.random() * levels.length);
+  // const setMatch = function() {
+  //   let randInt = Math.floor(Math.random() * levels.length);
+
+    function setMatch(){
+      let randInt =Math.floor(Math.random() * levels.length); 
+    
 
     if (matchEnded) {
       if (currentLevel === randInt) {
@@ -54,6 +58,7 @@ export const GameProvider = ({ children }) => {
         flag: [],
       });
 
+     
       flags.push({ id: country.id, imageUrl: country.flag });
     });
 
@@ -72,16 +77,16 @@ export const GameProvider = ({ children }) => {
     setFailedGuessingAttempts(0);
 
     setMinutes(1);
-    setSeconds(30);
+    setSeconds(15);
   };
 
-  useEffect(() => {
+  useEffect(function() {
     if (startMatch) {
       setMatch();
     }
   }, [startMatch]);
 
-  useEffect(() => {
+  useEffect(function() {
     let interval;
 
     const substractTime = (min, sec, setMin, setSec) => {
@@ -98,7 +103,7 @@ export const GameProvider = ({ children }) => {
     };
 
     if (startMatch) {
-      interval = setInterval(() => {
+      interval = setInterval(function() {
         if (matchEnded) {
           clearInterval(interval);
         } else {
@@ -106,22 +111,24 @@ export const GameProvider = ({ children }) => {
         }
       }, 1000);
 
-      return () => {
+      return function() {
         clearInterval(interval);
       };
     }
   });
 
-  useEffect(() => {
+  useEffect(function() {
     if (minutes === 0 && seconds === 0) {
       setMatchEnded(true);
     }
   }, [minutes, seconds]);
 
-  useEffect(() => {
+  useEffect(function() {
     if (matchDraggableFlags.length === 0) {
+      
       setMatchEnded(true);
       setPlayerWon(true);
+     
     }
 
     if (matchEnded) {
@@ -131,13 +138,13 @@ export const GameProvider = ({ children }) => {
     }
   }, [matchEnded, matchDraggableFlags]);
 
-  useEffect(() => {
-    setTimeout(() => {
+  useEffect(function() {
+    setTimeout(function() {
       setError(null);
     }, 4000);
   }, [error]);
 
-  const handleOnDragEnd = (result) => {
+  function handleOnDragEnd(result) {
     console.log(result);
     const { source, destination, draggableId } = result;
 

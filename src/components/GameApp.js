@@ -3,12 +3,27 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { GameContext } from "../context/GameContext";
 import DraggableFlagsContainer from "./DraggableFlagsContainer";
 import EndMatchStats from "./EndMatchStats";
-import Footer from "./Footer";
-import HowToPlayBox from "./HowToPlayBox";
+
+
 import SilhouettesGridContainer from "./SilhouettesGridContainer";
 import Timer from "./Timer";
 
 export default function GameApp() {
+  const data = [
+    {
+        Name: "Nikita",
+        Marks: "98",
+        Phone: "123",
+    },
+    {
+        Name: "Pratiksha",
+        Marks: "96",
+        Phone: "127",
+    }]
+    function s(){
+  data.map((e)=>{alert("in s"); return <tr className="items"><td>{e.name}</td></tr>})
+    }
+    
   const {
     startMatch,
     setStartMatch,
@@ -21,9 +36,10 @@ export default function GameApp() {
     <>
       <DragDropContext onDragEnd={(result) => handleOnDragEnd(result)}>
         <main>
+        
           {!startMatch ? (
             <>
-              <Footer />
+              
               <img
                 src={"assets/misc/globe.svg"}
                 height={180}
@@ -34,9 +50,10 @@ export default function GameApp() {
                 className="playAgainBtn"
                 onClick={() => setStartMatch(true)}
               >
+                
                 Play
               </button>
-              <HowToPlayBox />
+              
             </>
           ) : matchEnded ? (
             <>
@@ -44,7 +61,7 @@ export default function GameApp() {
               <button onClick={setMatch} className="playAgainBtn">
                 Play again
               </button>
-              <Footer />
+              
             </>
           ) : (
             <>
@@ -60,8 +77,8 @@ export default function GameApp() {
                   <DraggableFlagsContainer />
                 </aside>
               </section>
-              <HowToPlayBox />
-              <Footer />
+              
+              
             </>
           )}
         </main>
